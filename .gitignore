@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+
+# Cache & Sessions
+cache/
+sessions/
+
+# Streamlit
+.streamlit/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+
+# Logs
+*.log
+logs/
+
+# Models (too large for GitHub)
+models/embedding/*.safetensors
+models/embedding/*.bin
+models/embedding/*.model
+
+# Batch files
+*.bat
+git_output.txt

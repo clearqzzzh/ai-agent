@@ -1,0 +1,93 @@
+{
+  "total_cases": 60,
+  "source_accuracy": 0.95,
+  "mrr": 0.7539,
+  "avg_keyword_recall": 0.9514,
+  "avg_latency_ms": 1674.05,
+  "p50_latency_ms": 1632.88,
+  "p95_latency_ms": 2097.65,
+  "by_category": {
+    "猫咪喂养": {
+      "total": 15,
+      "source_accuracy": 0.9333,
+      "avg_keyword_recall": 0.9389
+    },
+    "狗狗喂养": {
+      "total": 15,
+      "source_accuracy": 1.0,
+      "avg_keyword_recall": 0.9556
+    },
+    "宠物用品": {
+      "total": 7,
+      "source_accuracy": 0.8571,
+      "avg_keyword_recall": 0.8571
+    },
+    "宠物零食": {
+      "total": 8,
+      "source_accuracy": 1.0,
+      "avg_keyword_recall": 1.0
+    },
+    "综合知识": {
+      "total": 5,
+      "source_accuracy": 0.8,
+      "avg_keyword_recall": 0.9333
+    },
+    "宠物医疗": {
+      "total": 10,
+      "source_accuracy": 1.0,
+      "avg_keyword_recall": 1.0
+    }
+  },
+  "failures": [
+    {
+      "id": 11,
+      "question": "长毛猫需要怎么护理毛发？",
+      "expected": "cat_feeding.md",
+      "got": [
+        "pet_grooming.md",
+        "pet_grooming.md",
+        "pet_product_guide.md",
+        "pet_seasonal_care.md",
+        "pet_product_guide.md",
+        "pet_seasonal_care.md"
+      ],
+      "miss_keywords": [
+        "梳理"
+      ]
+    },
+    {
+      "id": 31,
+      "question": "猫砂哪种比较好用？",
+      "expected": "pet_supplies.md",
+      "got": [
+        "pet_product_guide.md",
+        "cat_feeding.md",
+        "cat_feeding.md",
+        "dog_feeding.md",
+        "pet_medical.md",
+        "dog_feeding.md"
+      ],
+      "miss_keywords": [
+        "膨润土",
+        "豆腐砂",
+        "混合砂"
+      ]
+    },
+    {
+      "id": 46,
+      "question": "猫咪和狗狗都不能吃什么？",
+      "expected": "cat_feeding.md",
+      "got": [
+        "pet_medical.md",
+        "pet_medical.md",
+        "pet_diseases.md",
+        "dog_feeding.md",
+        "pet_diseases.md",
+        "pet_nutrition.md"
+      ],
+      "miss_keywords": [
+        "洋葱"
+      ]
+    }
+  ]
+}

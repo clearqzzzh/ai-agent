@@ -1,0 +1,422 @@
+[
+  {
+    "id": 1,
+    "category": "猫咪喂养",
+    "question": "布偶猫肠胃不好，应该选什么猫粮？",
+    "expected_source": "cat_feeding.md",
+    "expected_keywords": ["益生菌", "肠胃敏感", "软便"]
+  },
+  {
+    "id": 2,
+    "category": "猫咪喂养",
+    "question": "幼猫一天喂几次比较合适？",
+    "expected_source": "cat_feeding.md",
+    "expected_keywords": ["3-4次", "高蛋白", "幼猫粮"]
+  },
+  {
+    "id": 3,
+    "category": "猫咪喂养",
+    "question": "英短猫容易胖，饮食上要注意什么？",
+    "expected_source": "cat_feeding.md",
+    "expected_keywords": ["控制", "低脂", "食量"]
+  },
+  {
+    "id": 4,
+    "category": "猫咪喂养",
+    "question": "波斯猫吃东西困难怎么办？",
+    "expected_source": "cat_feeding.md",
+    "expected_keywords": ["扁脸", "颗粒小", "进食困难"]
+  },
+  {
+    "id": 5,
+    "category": "猫咪喂养",
+    "question": "给猫换粮的正确方法是什么？",
+    "expected_source": "cat_feeding.md",
+    "expected_keywords": ["7日换粮", "旧粮", "新粮", "比例"]
+  },
+  {
+    "id": 6,
+    "category": "猫咪喂养",
+    "question": "猫粮开封后怎么保存？",
+    "expected_source": "cat_feeding.md",
+    "expected_keywords": ["密封", "干燥剂", "阴凉"]
+  },
+  {
+    "id": 7,
+    "category": "猫咪喂养",
+    "question": "两个月的小猫每天吃多少猫粮？",
+    "expected_source": "cat_feeding.md",
+    "expected_keywords": ["40-60g", "幼猫"]
+  },
+  {
+    "id": 8,
+    "category": "猫咪喂养",
+    "question": "猫咪可以吃巧克力吗？",
+    "expected_source": "cat_feeding.md",
+    "expected_keywords": ["巧克力", "有毒", "可可碱"]
+  },
+  {
+    "id": 9,
+    "category": "猫咪喂养",
+    "question": "猫能不能喝牛奶？",
+    "expected_source": "cat_feeding.md",
+    "expected_keywords": ["乳糖不耐受", "牛奶", "乳制品"]
+  },
+  {
+    "id": 10,
+    "category": "猫咪喂养",
+    "question": "猫咪吃葡萄会怎么样？",
+    "expected_source": "cat_feeding.md",
+    "expected_keywords": ["急性肾衰竭", "葡萄"]
+  },
+  {
+    "id": 11,
+    "category": "猫咪喂养",
+    "question": "长毛猫需要怎么护理毛发？",
+    "expected_source": "cat_feeding.md",
+    "expected_keywords": ["梳理", "化毛膏", "猫草", "毛球"]
+  },
+  {
+    "id": 12,
+    "category": "猫咪喂养",
+    "question": "无毛猫喂养有什么特别的？",
+    "expected_source": "cat_feeding.md",
+    "expected_keywords": ["体温调节", "更高热量", "维持体温"]
+  },
+  {
+    "id": 13,
+    "category": "猫咪喂养",
+    "question": "缅因猫和普通猫粮一样吗？",
+    "expected_source": "cat_feeding.md",
+    "expected_keywords": ["大型猫", "专属配方", "生长期长"]
+  },
+  {
+    "id": 14,
+    "category": "猫咪喂养",
+    "question": "老年猫应该吃什么猫粮？",
+    "expected_source": "cat_feeding.md",
+    "expected_keywords": ["易消化", "40-60g", "7岁以上"]
+  },
+  {
+    "id": 15,
+    "category": "猫咪喂养",
+    "question": "猫罐头打开后能放多久？",
+    "expected_source": "cat_feeding.md",
+    "expected_keywords": ["冷藏", "24-48小时"]
+  },
+  {
+    "id": 16,
+    "category": "狗狗喂养",
+    "question": "狗可以吃巧克力吗？",
+    "expected_source": "dog_feeding.md",
+    "expected_keywords": ["巧克力", "剧毒", "致死", "可可碱"]
+  },
+  {
+    "id": 17,
+    "category": "狗狗喂养",
+    "question": "狗狗吃葡萄会死吗？",
+    "expected_source": "dog_feeding.md",
+    "expected_keywords": ["急性肾衰竭", "致命", "葡萄"]
+  },
+  {
+    "id": 18,
+    "category": "狗狗喂养",
+    "question": "狗不能吃哪些常见食物？",
+    "expected_source": "dog_feeding.md",
+    "expected_keywords": ["洋葱", "巧克力", "葡萄", "木糖醇"]
+  },
+  {
+    "id": 19,
+    "category": "狗狗喂养",
+    "question": "泰迪犬每天喂多少狗粮？",
+    "expected_source": "dog_feeding.md",
+    "expected_keywords": ["小型犬", "80-150g", "高能量"]
+  },
+  {
+    "id": 20,
+    "category": "狗狗喂养",
+    "question": "金毛幼犬需要注意什么？",
+    "expected_source": "dog_feeding.md",
+    "expected_keywords": ["大型犬", "钙磷比", "骨骼", "生长期长"]
+  },
+  {
+    "id": 21,
+    "category": "狗狗喂养",
+    "question": "柯基太胖了怎么控制饮食？",
+    "expected_source": "dog_feeding.md",
+    "expected_keywords": ["严格控制", "食量", "均衡"]
+  },
+  {
+    "id": 22,
+    "category": "狗狗喂养",
+    "question": "给狗换粮要怎么换？",
+    "expected_source": "dog_feeding.md",
+    "expected_keywords": ["7日换粮", "旧粮", "新粮"]
+  },
+  {
+    "id": 23,
+    "category": "狗狗喂养",
+    "question": "狗粮怎么保存比较好？",
+    "expected_source": "dog_feeding.md",
+    "expected_keywords": ["密封", "储粮桶", "干燥剂", "6-8周"]
+  },
+  {
+    "id": 24,
+    "category": "狗狗喂养",
+    "question": "大包装狗粮怎么存？",
+    "expected_source": "dog_feeding.md",
+    "expected_keywords": ["分装", "小包", "减少空气接触"]
+  },
+  {
+    "id": 25,
+    "category": "狗狗喂养",
+    "question": "狗狗皮肤过敏吃什么狗粮？",
+    "expected_source": "dog_feeding.md",
+    "expected_keywords": ["单一肉源", "低敏", "鸭肉", "鹿肉"]
+  },
+  {
+    "id": 26,
+    "category": "狗狗喂养",
+    "question": "金毛关节不好吃什么？",
+    "expected_source": "dog_feeding.md",
+    "expected_keywords": ["葡萄糖胺", "软骨素", "控制体重"]
+  },
+  {
+    "id": 27,
+    "category": "狗狗喂养",
+    "question": "比熊泪痕严重怎么选狗粮？",
+    "expected_source": "dog_feeding.md",
+    "expected_keywords": ["低盐", "无人工色素"]
+  },
+  {
+    "id": 28,
+    "category": "狗狗喂养",
+    "question": "幼犬一天喂几次？",
+    "expected_source": "dog_feeding.md",
+    "expected_keywords": ["3-4次", "少食多餐", "高蛋白"]
+  },
+  {
+    "id": 29,
+    "category": "狗狗喂养",
+    "question": "狗可以吃木糖醇吗？",
+    "expected_source": "dog_feeding.md",
+    "expected_keywords": ["木糖醇", "低血糖", "致命"]
+  },
+  {
+    "id": 30,
+    "category": "狗狗喂养",
+    "question": "阿拉斯加幼犬能大量补钙吗？",
+    "expected_source": "dog_feeding.md",
+    "expected_keywords": ["禁止", "过量补钙", "髋关节"]
+  },
+  {
+    "id": 31,
+    "category": "宠物用品",
+    "question": "猫砂哪种比较好用？",
+    "expected_source": "pet_supplies.md",
+    "expected_keywords": ["膨润土", "豆腐砂", "混合砂"]
+  },
+  {
+    "id": 32,
+    "category": "宠物用品",
+    "question": "猫砂盆要买几个？",
+    "expected_source": "pet_supplies.md",
+    "expected_keywords": ["猫数量+1", "开放式", "半封闭"]
+  },
+  {
+    "id": 33,
+    "category": "宠物用品",
+    "question": "大型犬牵引绳怎么选？",
+    "expected_source": "pet_supplies.md",
+    "expected_keywords": ["尼龙", "结实", "1.2-1.5米"]
+  },
+  {
+    "id": 34,
+    "category": "宠物用品",
+    "question": "法斗用项圈好还是胸背带好？",
+    "expected_source": "pet_supplies.md",
+    "expected_keywords": ["胸背带", "气管", "短鼻犬"]
+  },
+  {
+    "id": 35,
+    "category": "宠物用品",
+    "question": "长毛猫用什么梳子？",
+    "expected_source": "pet_supplies.md",
+    "expected_keywords": ["针梳", "排梳", "组合"]
+  },
+  {
+    "id": 36,
+    "category": "宠物用品",
+    "question": "宠物沐浴露能用人用的吗？",
+    "expected_source": "pet_supplies.md",
+    "expected_keywords": ["不能", "pH值", "宠物专用"]
+  },
+  {
+    "id": 37,
+    "category": "宠物用品",
+    "question": "自动喂食器多久清洗一次？",
+    "expected_source": "pet_supplies.md",
+    "expected_keywords": ["每周", "拆洗", "细菌"]
+  },
+  {
+    "id": 38,
+    "category": "宠物零食",
+    "question": "猫条一周喂几次合适？",
+    "expected_source": "pet_snacks.md",
+    "expected_keywords": ["2-3次", "不宜过量"]
+  },
+  {
+    "id": 39,
+    "category": "宠物零食",
+    "question": "猫咪最健康的零食是什么？",
+    "expected_source": "pet_snacks.md",
+    "expected_keywords": ["冻干", "纯肉", "蛋白质", "无添加"]
+  },
+  {
+    "id": 40,
+    "category": "宠物零食",
+    "question": "长毛猫需要吃化毛膏吗？",
+    "expected_source": "pet_snacks.md",
+    "expected_keywords": ["长毛猫", "必备", "毛球"]
+  },
+  {
+    "id": 41,
+    "category": "宠物零食",
+    "question": "训练狗狗用什么零食好？",
+    "expected_source": "pet_snacks.md",
+    "expected_keywords": ["颗粒小", "低热量", "鸡肉粒", "牛肝粒"]
+  },
+  {
+    "id": 42,
+    "category": "宠物零食",
+    "question": "幼犬磨牙期吃什么？",
+    "expected_source": "pet_snacks.md",
+    "expected_keywords": ["磨牙棒", "换牙期", "3-8个月"]
+  },
+  {
+    "id": 43,
+    "category": "宠物零食",
+    "question": "零食占每天食量的比例是多少？",
+    "expected_source": "pet_snacks.md",
+    "expected_keywords": ["10%", "总热量"]
+  },
+  {
+    "id": 44,
+    "category": "宠物零食",
+    "question": "狗零食能喂猫吗？",
+    "expected_source": "pet_snacks.md",
+    "expected_keywords": ["不能混用", "成分"]
+  },
+  {
+    "id": 45,
+    "category": "宠物零食",
+    "question": "冻干零食有什么好处？",
+    "expected_source": "pet_snacks.md",
+    "expected_keywords": ["营养", "风味", "复水", "主食伴侣"]
+  },
+  {
+    "id": 46,
+    "category": "综合知识",
+    "question": "猫咪和狗狗都不能吃什么？",
+    "expected_source": "cat_feeding.md",
+    "expected_keywords": ["巧克力", "洋葱", "葡萄"]
+  },
+  {
+    "id": 47,
+    "category": "综合知识",
+    "question": "宠物零食吃多了会怎样？",
+    "expected_source": "pet_snacks.md",
+    "expected_keywords": ["10%", "过敏", "消化不良"]
+  },
+  {
+    "id": 48,
+    "category": "综合知识",
+    "question": "换粮后猫咪拉稀了怎么办？",
+    "expected_source": "cat_feeding.md",
+    "expected_keywords": ["放缓", "观察", "粪便", "异常"]
+  },
+  {
+    "id": 49,
+    "category": "综合知识",
+    "question": "狗狗换粮后软便怎么处理？",
+    "expected_source": "dog_feeding.md",
+    "expected_keywords": ["放缓", "粪便", "10-14天"]
+  },
+  {
+    "id": 50,
+    "category": "综合知识",
+    "question": "大型犬幼犬和小型犬幼犬喂养有什么区别？",
+    "expected_source": "dog_feeding.md",
+    "expected_keywords": ["钙磷比", "骨骼", "大型犬", "小型犬"]
+  },
+  {
+    "id": 51,
+    "category": "宠物医疗",
+    "question": "猫咪拉稀了怎么办？",
+    "expected_source": "pet_medical.md",
+    "expected_keywords": ["益生菌", "禁食", "就医信号"]
+  },
+  {
+    "id": 52,
+    "category": "宠物医疗",
+    "question": "狗狗呕吐是怎么回事？",
+    "expected_source": "pet_medical.md",
+    "expected_keywords": ["禁食12小时", "吃太快", "就医信号"]
+  },
+  {
+    "id": 53,
+    "category": "宠物医疗",
+    "question": "宠物皮肤发红瘙痒怎么办？",
+    "expected_source": "pet_medical.md",
+    "expected_keywords": ["过敏", "寄生虫", "沐浴露", "就医"]
+  },
+  {
+    "id": 54,
+    "category": "宠物医疗",
+    "question": "猫咪掉毛很严重正常吗？",
+    "expected_source": "pet_medical.md",
+    "expected_keywords": ["换毛季", "梳毛", "鱼油", "卵磷脂"]
+  },
+  {
+    "id": 55,
+    "category": "宠物医疗",
+    "question": "狗狗耳朵有异味怎么处理？",
+    "expected_source": "pet_medical.md",
+    "expected_keywords": ["洗耳液", "耳螨", "棉球", "就医"]
+  },
+  {
+    "id": 56,
+    "category": "宠物医疗",
+    "question": "猫咪眼屎多是什么原因？",
+    "expected_source": "pet_medical.md",
+    "expected_keywords": ["鼻泪管", "结膜炎", "眼部清洁液", "就医"]
+  },
+  {
+    "id": 57,
+    "category": "宠物医疗",
+    "question": "宠物口臭很严重怎么办？",
+    "expected_source": "pet_medical.md",
+    "expected_keywords": ["牙结石", "牙龈炎", "刷牙", "洁齿骨"]
+  },
+  {
+    "id": 58,
+    "category": "宠物医疗",
+    "question": "猫咪排尿困难是怎么回事？",
+    "expected_source": "pet_medical.md",
+    "expected_keywords": ["饮水不足", "泌尿道", "流动饮水机", "处方猫粮"]
+  },
+  {
+    "id": 59,
+    "category": "宠物医疗",
+    "question": "狗狗便秘了吃什么好？",
+    "expected_source": "pet_medical.md",
+    "expected_keywords": ["饮水", "化毛膏", "高纤维", "运动"]
+  },
+  {
+    "id": 60,
+    "category": "宠物医疗",
+    "question": "猫咪打喷嚏流鼻涕是感冒了吗？",
+    "expected_source": "pet_medical.md",
+    "expected_keywords": ["灰尘", "感冒", "通风", "保暖"]
+  }
+]

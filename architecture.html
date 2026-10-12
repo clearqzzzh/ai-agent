@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetHome 智能客服系统 — 7-Agent 多智能体架构</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .header h1 {
+            color: white;
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+            letter-spacing: 2px;
+        }
+        .header .subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.3em;
+            font-weight: 300;
+        }
+        .header .badges {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .badge {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .architecture {
+            background: white;
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
+        }
+        .layer {
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .layer-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            padding-left: 18px;
+            border-left: 5px solid #7e22ce;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .layer-title .icon {
+            font-size: 1.2em;
+        }
+        .components {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            justify-content: center;
+        }
+        .component {
+            background: linear-gradient(145deg, #f8f9ff 0%, #e8ecf5 100%);
+            border-radius: 16px;
+            padding: 22px;
+            min-width: 220px;
+            max-width: 320px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(126,34,206,0.1);
+        }
+        .component:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 35px rgba(126,34,206,0.15);
+            border-color: rgba(126,34,206,0.3);
+        }
+        .component.primary {
+            background: linear-gradient(145deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .component.secondary {
+            background: linear-gradient(145deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        .component.tertiary {
+            background: linear-gradient(145deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+        .component.quaternary {
+            background: linear-gradient(145deg, #43e97b 0%, #38f9d7 100%);
+            color: #1a1a2e;
+        }
+        .component.warning {
+            background: linear-gradient(145deg, #fa709a 0%, #fee140 100%);
+            color: #1a1a2e;
+        }
+        .component-name {
+            font-weight: 700;
+            font-size: 1.15em;
+            margin-bottom: 10px;
+        }
+        .component-desc {
+            font-size: 0.88em;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        .arrow-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 25px 0;
+            gap: 15px;
+        }
+        .arrow-line {
+            flex: 1;
+            max-width: 200px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+        .arrow-label {
+            background: #7e22ce;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .supervisor-box {
+            background: linear-gradient(145deg, #fff7ed 0%, #ffedd5 50%, #fed7aa 100%);
+            border-radius: 18px;
+            padding: 30px;
+            margin: 20px 0;
+            border: 2px solid #fb923c;
+        }
+        .supervisor-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .supervisor-header h3 {
+            font-size: 1.5em;
+            color: #9a3412;
+        }
+        .routing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .routing-card {
+            background: white;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .routing-card h4 {
+            color: #7e22ce;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+        .routing-card ul {
+            padding-left: 18px;
+            line-height: 1.8;
+            font-size: 0.92em;
+            color: #555;
+        }
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 25px;
+        }
+        .agent-card {
+            background: white;
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            border-top: 4px solid #7e22ce;
+            transition: all 0.3s ease;
+        }
+        .agent-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        .agent-card:nth-child(1) { border-top-color: #667eea; }
+        .agent-card:nth-child(2) { border-top-color: #f5576c; }
+        .agent-card:nth-child(3) { border-top-color: #43e97b; }
+        .agent-card:nth-child(4) { border-top-color: #4facfe; }
+        .agent-card:nth-child(5) { border-top-color: #fa709a; }
+        .agent-card:nth-child(6) { border-top-color: #a78bfa; }
+        .agent-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .agent-icon {
+            font-size: 1.8em;
+        }
+        .agent-name {
+            font-weight: 700;
+            font-size: 1.1em;
+            color: #1e3c72;
+        }
+        .agent-tools-label {
+            font-size: 0.82em;
+            color: #7e22ce;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .agent-tools {
+            font-size: 0.82em;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .agent-desc {
+            font-size: 0.85em;
+            color: #888;
+            font-style: italic;
+        }
+        .flow-box {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 1px solid #e2e8f0;
+        }
+        .flow-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .flow-step:last-child {
+            border-bottom: none;
+        }
+        .flow-num {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9em;
+            flex-shrink: 0;
+        }
+        .flow-text {
+            font-size: 0.95em;
+            color: #334155;
+            line-height: 1.6;
+        }
+        .flow-text strong {
+            color: #7e22ce;
+        }
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+        .tech-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(102,126,234,0.3);
+        }
+        .perf-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 20px;
+        }
+        .perf-card {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 22px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        .perf-card:hover {
+            border-color: #7e22ce;
+            box-shadow: 0 6px 20px rgba(126,34,206,0.1);
+        }
+        .perf-time {
+            font-size: 2.2em;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .perf-time.fast { color: #22c55e; }
+        .perf-time.medium { color: #f59e0b; }
+        .perf-time.slow { color: #ef4444; }
+        .perf-label {
+            font-size: 0.9em;
+            color: #64748b;
+        }
+        .perf-method {
+            font-size: 0.78em;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+        .highlight-box {
+            background: linear-gradient(145deg, #fef3c7, #fde68a);
+            border-radius: 14px;
+            padding: 22px;
+            margin-top: 20px;
+            border: 1px solid #f59e0b;
+        }
+        .highlight-box h4 {
+            color: #92400e;
+            margin-bottom: 10px;
+        }
+        .highlight-box p {
+            color: #78350f;
+            font-size: 0.92em;
+            line-height: 1.7;
+        }
+        .footer {
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+            margin-top: 40px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        @media (max-width: 1024px) {
+            .agents-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .perf-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .routing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 640px) {
+            .agents-grid {
+                grid-template-columns: 1fr;
+            }
+            .architecture {
+                padding: 25px;
+            }
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🐾 PetHome 智能客服系统</h1>
+            <p class="subtitle">基于 LangGraph 的 7-Agent 多智能体架构 · 全链路可观测</p>
+            <div class="badges">
+                <span class="badge">7 Agent 协作</span>
+                <span class="badge">22 Function Calling 工具</span>
+                <span class="badge">两层意图路由</span>
+                <span class="badge">LangSmith 追踪</span>
+                <span class="badge">RAG 知识库</span>
+                <span class="badge">熔断兜底机制</span>
+            </div>
+        </div>
+        
+        <div class="architecture">
+            <!-- 用户层 -->
+            <div class="layer">
+                <div class="layer-title"><span class="icon">👤</span> 用户层</div>
+                <div class="components">
+                    <div class="component primary">
+                        <div class="component-name">Streamlit 前端</div>
+                        <div class="component-desc">agent_ui.py<br>聊天界面 · 图片上传 · 会话管理</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="arrow-section">
+                <div class="arrow-line"></div>
+                <div class="arrow-label">HTTP POST /chat</div>
+                <div class="arrow-line"></div>
+            </div>
+            
+            <!-- API 层 -->
+            <div class="layer">
+                <div class="layer-title"><span class="icon">🌐</span> API 服务层</div>
+                <div class="components">
+                    <div class="component secondary">
+                        <div class="component-name">FastAPI 后端</div>
+                        <div class="component-desc">access/main.py<br>端口 8001 · CORS · TraceMiddleware</div>
+                    </div>
+                    <div class="component secondary">
+                        <div class="component-name">chat_with_tools</div>
+                        <div class="component-desc">会话加载 · Token 裁剪 · @traceable<br>graph.ainvoke() 入口</div>
+                    </div>
+                    <div class="component warning">
+                        <div class="component-name">LangSmith 追踪</div>
+                        <div class="component-desc">全链路 @traceable 埋点<br>supervisor / agent / tool 三级追踪</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="arrow-section">
+                <div class="arrow-line"></div>
+                <div class="arrow-label">graph.ainvoke(state)</div>
+                <div class="arrow-line"></div>
+            </div>
+            
+            <!-- 编排层 -->
+            <div class="layer">
+                <div class="layer-title"><span class="icon">🧠</span> 编排层 — LangGraph StateGraph</div>
+                
+                <div class="supervisor-box">
+                    <div class="supervisor-header">
+                        <span style="font-size: 2em;">🎯</span>
+                        <h3>Supervisor 调度节点</h3>
+                    </div>
+                    <div class="routing-grid">
+                        <div class="routing-card">
+                            <h4>📌 两层意图路由</h4>
+                            <ul>
+                                <li><strong>第一层：关键词硬规则</strong><br>30+ 关键词匹配，延迟 &lt;10ms<br>命中率约 60%</li>
+                                <li><strong>第二层：LLM 语义分类</strong><br>DeepSeek 调用，延迟 ~800ms<br>处理模糊/复杂意图</li>
+                            </ul>
+                        </div>
+                        <div class="routing-card">
+                            <h4>🛡️ 熔断保护机制</h4>
+                            <ul>
+                                <li><strong>MAX_ITERATIONS = 8</strong><br>单次请求内 Agent 循环上限</li>
+                                <li><strong>超限兜底</strong><br>强制 FINISH + 引导人工客服</li>
+                                <li><strong>防止死循环</strong><br>工具失败/格式异常时保护</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="arrow-section">
+                    <div class="arrow-line"></div>
+                    <div class="arrow-label">路由决策 → 6 个执行 Agent</div>
+                    <div class="arrow-line"></div>
+                </div>
+                
+                <!-- Agent 层 -->
+                <div class="agents-grid">
+                    <div class="agent-card">
+                        <div class="agent-header">
+                            <span class="agent-icon">🛍️</span>
+                            <span class="agent-name">商品咨询</span>
+                        </div>
+                        <div class="agent-tools-label">4 个工具</div>
+                        <div class="agent-tools">search_product · analyze_image<br>get_reviews · add_review</div>
+                        <div class="agent-desc">商品搜索 · 图片识别 · 评价管理</div>
+                    </div>
+                    <div class="agent-card">
+                        <div class="agent-header">
+                            <span class="agent-icon"></span>
+                            <span class="agent-name">下单操作</span>
+                        </div>
+                        <div class="agent-tools-label">11 个工具</div>
+                        <div class="agent-tools">地址管理 · 下单加购 · 购物车<br>物流追踪 · 支付 · 确认收货 · 注册</div>
+                        <div class="agent-desc">完整购物流程 · 6 步下单</div>
+                    </div>
+                    <div class="agent-card">
+                        <div class="agent-header">
+                            <span class="agent-icon">🔄</span>
+                            <span class="agent-name">售后处理</span>
+                        </div>
+                        <div class="agent-tools-label">3 个工具</div>
+                        <div class="agent-tools">check_refund_eligibility<br>request_refund · get_refund_info</div>
+                        <div class="agent-desc">退货资格 · 一键退款 · 进度查询</div>
+                    </div>
+                    <div class="agent-card">
+                        <div class="agent-header">
+                            <span class="agent-icon">🏥</span>
+                            <span class="agent-name">宠物健康</span>
+                        </div>
+                        <div class="agent-tools-label">2 个工具</div>
+                        <div class="agent-tools">search_medical_knowledge<br>search_product</div>
+                        <div class="agent-desc">症状分析 · 护理建议 · 就医指引</div>
+                    </div>
+                    <div class="agent-card">
+                        <div class="agent-header">
+                            <span class="agent-icon">📚</span>
+                            <span class="agent-name">知识检索</span>
+                        </div>
+                        <div class="agent-tools-label">1 个工具</div>
+                        <div class="agent-tools">search_knowledge</div>
+                        <div class="agent-desc">喂养知识 · 营养搭配 · 日常护理</div>
+                    </div>
+                    <div class="agent-card">
+                        <div class="agent-header">
+                            <span class="agent-icon"></span>
+                            <span class="agent-name">未知意图兜底</span>
+                        </div>
+                        <div class="agent-tools-label">无工具 · 纯自然语言</div>
+                        <div class="agent-tools">5 种场景策略<br>闲聊 · 模糊 · 超范围 · 挫败 · 情绪</div>
+                        <div class="agent-desc">不让用户带着困惑离开</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="arrow-section">
+                <div class="arrow-line"></div>
+                <div class="arrow-label">工具调用</div>
+                <div class="arrow-line"></div>
+            </div>
+            
+            <!-- 工具层 -->
+            <div class="layer">
+                <div class="layer-title"><span class="icon"></span> 工具层 — 22 个 Function Calling 工具</div>
+                <div class="components">
+                    <div class="component tertiary">
+                        <div class="component-name">商城 API</div>
+                        <div class="component-desc">商品搜索 · 用户登录<br>localhost:8082/8083</div>
+                    </div>
+                    <div class="component tertiary">
+                        <div class="component-name">订单服务</div>
+                        <div class="component-desc">订单管理 · 物流追踪<br>localhost:8084</div>
+                    </div>
+                    <div class="component tertiary">
+                        <div class="component-name">RAG 知识库</div>
+                        <div class="component-desc">ChromaDB + text2vec<br>37 个知识 chunk</div>
+                    </div>
+                    <div class="component tertiary">
+                        <div class="component-name">千问 VL</div>
+                        <div class="component-desc">图片识别<br>qwen-vl-plus</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="arrow-section">
+                <div class="arrow-line"></div>
+                <div class="arrow-label">数据存储</div>
+                <div class="arrow-line"></div>
+            </div>
+            
+            <!-- 数据层 -->
+            <div class="layer">
+                <div class="layer-title"><span class="icon">💾</span> 数据层</div>
+                <div class="components">
+                    <div class="component quaternary">
+                        <div class="component-name">Redis</div>
+                        <div class="component-desc">会话存储 (Hash + ZSet)<br>TTL 24h · Token 感知裁剪</div>
+                    </div>
+                    <div class="component quaternary">
+                        <div class="component-name">ChromaDB</div>
+                        <div class="component-desc">向量数据库<br>宠物护理知识库</div>
+                    </div>
+                    <div class="component quaternary">
+                        <div class="component-name">LangSmith</div>
+                        <div class="component-desc">全链路追踪平台<br>可视化 · 性能分析 · 调试</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 核心流程 -->
+            <div class="layer" style="margin-top: 45px;">
+                <div class="layer-title"><span class="icon">🔄</span> 核心请求流程</div>
+                <div class="flow-box">
+                    <div class="flow-step">
+                        <div class="flow-num">1</div>
+                        <div class="flow-text"><strong>用户发消息</strong> → Streamlit 前端 → POST /chat (session_id + messages)</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-num">2</div>
+                        <div class="flow-text"><strong>FastAPI 接收</strong> → chat_with_tools() → 加载 Redis 会话 → tiktoken Token 裁剪</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-num">3</div>
+                        <div class="flow-text"><strong>LangGraph 启动</strong> → graph.ainvoke(initial_state) → 创建 Supervisor 节点</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-num">4</div>
+                        <div class="flow-text"><strong>Supervisor 路由</strong> → 硬规则匹配 (30+ 关键词) or LLM 语义分类 (DeepSeek) → 选择 Agent</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-num">5</div>
+                        <div class="flow-text"><strong>Agent 执行</strong> → 调用专属工具集 → 生成回复 (或继续循环，最多 8 次)</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-num">6</div>
+                        <div class="flow-text"><strong>结果返回</strong> → final_reply → 保存会话到 Redis → 返回前端展示</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-num">7</div>
+                        <div class="flow-text"><strong>LangSmith 追踪</strong> → 全程 @traceable 埋点 → 可视化分析性能瓶颈</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 性能数据 -->
+            <div class="layer">
+                <div class="layer-title"><span class="icon">📊</span> 性能数据 (LangSmith 实际追踪)</div>
+                <div class="perf-grid">
+                    <div class="perf-card">
+                        <div class="perf-time fast">1.51s</div>
+                        <div class="perf-label">查物流</div>
+                        <div class="perf-method">硬规则路由</div>
+                    </div>
+                    <div class="perf-card">
+                        <div class="perf-time fast">2.66s</div>
+                        <div class="perf-label">商品推荐</div>
+                        <div class="perf-method">硬规则路由</div>
+                    </div>
+                    <div class="perf-card">
+                        <div class="perf-time medium">4.18s</div>
+                        <div class="perf-label">护理知识</div>
+                        <div class="perf-method">LLM 语义分类</div>
+                    </div>
+                    <div class="perf-card">
+                        <div class="perf-time slow">5.70s</div>
+                        <div class="perf-label">宠物症状</div>
+                        <div class="perf-method">LLM 语义分类</div>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    <h4>💡 性能洞察</h4>
+                    <p>硬规则路由比 LLM 分类快约 1s（无 LLM 调用开销）。LLM 调用占总耗时约 70%，是主要优化方向。可通过并行工具调用、知识库缓存、意图分类模型轻量化来降低延迟。</p>
+                </div>
+            </div>
+            
+            <!-- 技术栈 -->
+            <div class="layer">
+                <div class="layer-title"><span class="icon">🛠️</span> 技术栈</div>
+                <div class="tech-stack">
+                    <div class="tech-tag">Python 3.12</div>
+                    <div class="tech-tag">FastAPI</div>
+                    <div class="tech-tag">LangGraph</div>
+                    <div class="tech-tag">DeepSeek</div>
+                    <div class="tech-tag">LangSmith</div>
+                    <div class="tech-tag">ChromaDB</div>
+                    <div class="tech-tag">Redis</div>
+                    <div class="tech-tag">Streamlit</div>
+                    <div class="tech-tag">tiktoken</div>
+                    <div class="tech-tag">text2vec</div>
+                    <div class="tech-tag">OpenAI SDK</div>
+                    <div class="tech-tag">httpx</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>架构设计：1 Supervisor + 6 Agent · 22 工具 · 两层路由 · LangSmith 全链路追踪 · 熔断兜底保护</p>
+            <p style="margin-top: 8px; opacity: 0.7;">PetHome 智能客服系统 · 面试演示项目</p>
+        </div>
+    </div>
+</body>
+</html>
