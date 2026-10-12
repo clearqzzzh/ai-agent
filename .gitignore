@@ -41,6 +41,10 @@ models/embedding/*.safetensors
 models/embedding/*.bin
 models/embedding/*.model
 
+# Resume docs (personal)
+简历*.md
+
 # Batch files
 *.bat
 git_output.txt
+git_*.txt
