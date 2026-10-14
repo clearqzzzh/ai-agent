@@ -1,7 +1,6 @@
 """
 对话服务 — LangGraph Supervisor 多Agent编排
 ==========================================
-取代旧版单Agent工具调用循环，改为 Supervisor → ProductAgent / OrderAgent 图。
 """
 
 from loguru import logger
