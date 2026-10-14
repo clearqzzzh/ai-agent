@@ -1,15 +1,12 @@
 """
 RAG 知识库评估脚本
 ==================
-用法: cd agent-service && python tests/evaluate_rag.py
-
 评估指标:
 1. Source Accuracy（来源准确率）: top-k 结果中是否包含期望的文档来源
 2. Keyword Recall（关键词召回率）: 返回内容中命中期望关键词的比例
 3. MRR（Mean Reciprocal Rank）: 第一个正确结果的排名倒数的均值
 4. Latency（响应延迟）: 单次检索的平均/P50/P95 耗时
 """
-
 import json
 import sys
 import time
