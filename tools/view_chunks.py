@@ -1,11 +1,5 @@
 """
 查看 ChromaDB 知识库中所有 chunk 的内容
-用法: python tools/view_chunks.py [--limit N] [--id CHUNK_ID]
-
-示例:
-  python tools/view_chunks.py              # 查看所有 chunk 概览
-  python tools/view_chunks.py --limit 5    # 只看前 5 个
-  python tools/view_chunks.py --id cat_feeding.md_chunk_0  # 查看指定 chunk 全文
 """
 import sys
 import os
